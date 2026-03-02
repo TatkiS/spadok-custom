@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spadok Custom | Пісні на замовлення</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --text-color: #f5f5f5;
+            --accent-color: #e63946;
+            --card-bg: #1e1e1e;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #000000 0%, var(--bg-color) 100%);
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h1 span { color: var(--accent-color); }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaaaaa;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn:hover { background-color: #d62828; transform: translateY(-2px); }
+        
+        section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+        h2 { text-align: center; font-size: 2rem; margin-bottom: 40px; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 10px; }
+        .text-center { text-align: center; }
+
+        /* Відео сітка */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .video-wrapper {
+            background: var(--card-bg);
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+        .video-title { margin-top: 10px; font-weight: bold; text-align: center; font-size: 0.9rem; color: #ccc; }
+
+        /* Ціни та Етапи */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 4px solid var(--accent-color);
+        }
+        .price { font-size: 2rem; font-weight: bold; color: var(--accent-color); margin: 15px 0; }
+        ul { padding-left: 20px; color: #ccc; }
+        li { margin-bottom: 10px; }
+
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid #333; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Spadok <span>Custom</span></h1>
+    <p class="subtitle">Унікальні пісні на замовлення. Живий звук, професійне зведення, без "штучної пластмаси". Будь-який жанр — від лірики до року.</p>
+    <a href="#contact" class="btn">Замовити трек</a>
+</header>
+
+<section id="portfolio">
+    <div class="text-center"><h2>Наш звук (Портфоліо)</h2></div>
+    <div class="portfolio-grid">
+        <div class="video-wrapper">
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/qD9H1B-nGmw?rel=0&modestbranding=1&playsinline=1" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="video-title">Французький шансон (Українською)</div>
+        </div>
+        <div class="video-wrapper">
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/by_hivVYc0A?rel=0&modestbranding=1&playsinline=1" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="video-title">Ска-Панк (26 000+ переглядів)<br><span style="font-size: 0.8em; color: var(--accent-color);">18+ (ненормативна лексика)</span></div>
+        </div>
+        <div class="video-wrapper">
+            <div class="video-container">
+                <iframe src="https://www.youtube-nocookie.com/embed/QO0-KPOkyrM?rel=0&modestbranding=1&playsinline=1" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="video-title">Cold Wave / Пост-панк</div>
+        </div>
+    </div>
+</section>
+
+<section id="how-it-works">
+    <div class="text-center"><h2>Як ми працюємо</h2></div>
+    <div class="grid-2">
+        <div class="card">
+            <h3>1. Ваша ідея</h3>
+            <p>Ви описуєте ситуацію (подарунок, історія з життя, жарт) або даєте готовий вірш. Вибираємо настрій і жанр.</p>
+        </div>
+        <div class="card">
+            <h3>2. Наша магія</h3>
+            <p>Пишемо професійний текст, генеруємо структуру, підбираємо правильний живий вокал та робимо зведення.</p>
+        </div>
+    </div>
+</section>
+
+<section id="pricing">
+    <div class="text-center"><h2>Вартість</h2></div>
+    <div class="grid-2">
+        <div class="card">
+            <h3>Базовий</h3>
+            <div class="price">500 грн</div>
+            <ul>
+                <li>Пісня за вашою історією</li>
+                <li>1 жанр на вибір</li>
+                <li>2 варіанти виконання</li>
+                <li>MP3 / WAV високої якості</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Преміум</h3>
+            <div class="price">1000 грн</div>
+            <ul>
+                <li>Повністю унікальний текст</li>
+                <li>Складне зведення та мастеринг</li>
+                <li>Передача комерційних прав</li>
+                <li>Базове відео для соцмереж (YouTube/TikTok)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="text-center">
+    <h2>Готові до свого хіта?</h2>
+    <p>Напишіть нам у Telegram. Обговоримо деталі та почнемо роботу.</p>
+    <a href="https://t.me/SpadokCustom_bot" class="btn" target="_blank">Написати в Telegram</a>
+</section>
+
+<footer>
+    <p>&copy; 2026 Spadok Custom. Усі права захищені.</p>
+</footer>
+
+</body>
+</html>
