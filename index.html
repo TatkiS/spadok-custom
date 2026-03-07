@@ -53,11 +53,9 @@
             transition: 0.3s;
         }
         .btn:hover { background-color: #d62828; transform: translateY(-2px); }
-
         section { padding: 60px 20px; }
         h2 { text-align: center; font-size: 2rem; margin-bottom: 40px; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 10px; }
         .text-center { text-align: center; }
-
         /* Аудіоплеєр */
         .audio-player {
             background: var(--card-bg);
@@ -108,7 +106,6 @@
             transition: width 0.1s;
         }
         .time-display { font-size: 0.85rem; color: #ccc; }
-
         /* Плейлист */
         .playlist {
             display: grid;
@@ -134,7 +131,6 @@
         }
         .playlist-title { font-weight: bold; margin-bottom: 8px; }
         .playlist-duration { color: #888; font-size: 0.9rem; }
-
         /* Ціни */
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card {
@@ -146,9 +142,7 @@
         .price { font-size: 2rem; font-weight: bold; color: var(--accent-color); margin: 15px 0; }
         ul { padding-left: 20px; color: #ccc; }
         li { margin-bottom: 10px; }
-
         footer { text-align: center; padding: 40px 20px; border-top: 1px solid #333; margin-top: 40px; }
-
         @media (max-width: 768px) {
             .audio-controls { flex-direction: column; gap: 15px; }
             .playlist { grid-template-columns: 1fr; }
@@ -245,24 +239,38 @@
         let currentTrack = 0;
         let tracks = [
             {
-                title: "Французький шансон (Українською)",
+                title: "Без перемотки",
                 artist: "Spadok Custom",
-                file: "audio/french_chanson_ua.mp3"
+                file: "https://drive.google.com/uc?export=download&id=1pfn177CW6G3s_HrC47ISEH9Gd9mBuGQg"
             },
             {
-                title: "Ска-Панк (26 000+ переглядів)",
+                title: "Голос Вітру", 
                 artist: "Spadok Custom",
-                file: "audio/skapunk_26k.mp3"
+                file: "https://drive.google.com/uc?export=download&id=1FwPDocOO_LarR91GvSDmn8pxVhGY2go9"
             },
             {
-                title: "Cold Wave / Пост-панк",
-                artist: "Spadok Custom", 
-                file: "audio/postpunk_coldwave.mp3"
+                title: "Blood Pay",
+                artist: "Spadok Custom",
+                file: "https://drive.google.com/uc?export=download&id=1JWtFYIB-p1l7UJBRs_dTy9oU76ISVSvz"
+            },
+            {
+                title: "Born of the Light",
+                artist: "Spadok Custom",
+                file: "https://drive.google.com/uc?export=download&id=12LDBQd90_GLQj_ISL_HomNRmIxhgkgRy"
+            },
+            {
+                title: "Eternal Light",
+                artist: "Spadok Custom",
+                file: "https://drive.google.com/uc?export=download&id=1dN7hrhC04IOufY9nlUM9PuJZjyYLs5ab"
+            },
+            {
+                title: "The Mask I Wear",
+                artist: "Spadok Custom",
+                file: "https://drive.google.com/uc?export=download&id=1_8_CAv1I50MLAd592PVdBcet5QGMzUqI"
             }
-            // Додавайте нові треки сюди у такому ж форматі
         ];
 
-        // Ініціалізація плеєра
+        // Решта JS-коду залишається таким самим...
         function initPlayer() {
             const playBtn = document.getElementById('playBtn');
             const progressContainer = document.getElementById('progressContainer');
@@ -296,6 +304,7 @@
             };
         }
 
+        // Решта функцій (playTrack, togglePlay, updateProgress тощо) залишається без змін...
         function playTrack(index) {
             currentTrack = index;
             const playlistItems = document.querySelectorAll('.playlist-item');
