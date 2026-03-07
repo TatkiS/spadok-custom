@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spadok Custom | Унікальні пісні та музика на замовлення</title>
+    <meta name="description" content="Створення унікальних пісень на замовлення з живим звуком. Треки для подарунків, бізнесу, привітань. Будь-який жанр від лірики до року. Замовляй свій хіт онлайн!">
+    <meta name="keywords" content="пісня на замовлення, замовити пісню, пісня в подарунок, написати пісню, створення музики, унікальна пісня, Spadok Custom">
     <style>
-        /* Ваш поточний CSS без змін */
         :root {
             --bg-color: #121212;
             --text-color: #f5f5f5;
@@ -21,117 +22,215 @@
             color: var(--text-color);
             line-height: 1.6;
         }
-        /* ... решта CSS залишається без змін ... */
-        /* Додаємо тільки критичні стилі для плеєра */
-        .audio-player { background: var(--card-bg); padding: 30px; border-radius: 15px; margin-bottom: 40px; text-align: center; }
-        .playlist { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .playlist-item { background: var(--card-bg); padding: 20px; border-radius: 10px; cursor: pointer; }
-        .play-btn { background: var(--accent-color); border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 24px; color: white; cursor: pointer; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #000000 0%, var(--bg-color) 100%);
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        h1 span { color: var(--accent-color); }
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaaaaa;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .btn:hover { background-color: #d62828; transform: translateY(-2px); }
+        section { padding: 60px 20px; }
+        h2 { text-align: center; font-size: 2rem; margin-bottom: 40px; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 10px; }
+
+        /* Картки портфоліо */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        .track-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border-top: 4px solid var(--accent-color);
+            transition: all 0.3s;
+            cursor: pointer;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .track-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(230,57,70,0.4);
+        }
+        .track-visual {
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-color), #d62828);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        .track-visual::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--accent-color);
+        }
+        .track-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        .track-meta {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 15px;
+        }
+        .track-cta {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+            font-size: 0.95rem;
+        }
+        .track-cta:hover {
+            background: #d62828;
+            transform: scale(1.02);
+        }
+
+        /* Ціни та решта */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 4px solid var(--accent-color);
+        }
+        .price { font-size: 2rem; font-weight: bold; color: var(--accent-color); margin: 15px 0; }
+        ul { padding-left: 20px; color: #ccc; }
+        li { margin-bottom: 10px; }
+
+        @media (max-width: 768px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <!-- Заголовок -->
-    <header style="text-align: center; padding: 80px 20px;">
-        <h1 style="font-size: 3rem; margin: 0; text-transform: uppercase; color: #e63946;">Spadok <span style="color: white;">Custom</span></h1>
-        <p style="font-size: 1.2rem; color: #aaaaaa; max-width: 600px; margin: 20px auto;">Унікальні пісні на замовлення. Живий звук, професійне зведення.</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Spadok <span>Custom</span></h1>
+            <p class="subtitle">Унікальні пісні на замовлення. Живий звук, професійне зведення, без "штучної пластмаси". Будь-який жанр — від лірики до року.</p>
+            <a href="#contact" class="btn">Замовити трек</a>
+        </header>
 
-    <!-- Портфоліо -->
-    <section style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
-        <h2 style="text-align: center; font-size: 2rem; color: #e63946; border-bottom: 2px solid #e63946;">Наш звук (Портфоліо)</h2>
+        <section id="portfolio">
+            <h2>Наш звук (Портфоліо)</h2>
+            <div class="portfolio-grid">
+                <div class="track-card" onclick="playTrack('https://drive.google.com/file/d/1pfn177CW6G3s_HrC47ISEH9Gd9mBuGQg/view?usp=sharing', 'Без перемотки')">
+                    <div class="track-visual"></div>
+                    <div class="track-title">Без перемотки</div>
+                    <div class="track-meta">Spadok Custom | Потужний трек</div>
+                    <button class="track-cta">▶ Слухати трек</button>
+                </div>
 
-        <!-- Простіший плеєр для тестування -->
-        <div style="background: #1e1e1e; padding: 30px; border-radius: 15px; text-align: center; margin-bottom: 40px;">
-            <button id="playBtn" style="background: #e63946; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 24px; color: white; cursor: pointer; margin-right: 20px;">▶</button>
-            <span id="currentTrack" style="font-size: 1.3rem; font-weight: bold;">Оберіть трек</span>
-            <div id="progress" style="width: 300px; height: 6px; background: #444; border-radius: 3px; margin: 20px auto; cursor: pointer;">
-                <div id="progressBar" style="background: #e63946; height: 100%; border-radius: 3px; width: 0%;"></div>
+                <div class="track-card" onclick="playTrack('https://drive.google.com/file/d/1FwPDocOO_LarR91GvSDmn8pxVhGY2go9/view?usp=sharing', 'Голос Вітру')">
+                    <div class="track-visual"></div>
+                    <div class="track-title">Голос Вітру</div>
+                    <div class="track-meta">Spadok Custom | Атмосферний дарквейв</div>
+                    <button class="track-cta">▶ Слухати трек</button>
+                </div>
+
+                <div class="track-card" onclick="playTrack('https://drive.google.com/file/d/1JWtFYIB-p1l7UJBRs_dTy9oU76ISVSvz/view?usp=sharing', 'Blood Pay')">
+                    <div class="track-visual"></div>
+                    <div class="track-title">Blood Pay</div>
+                    <div class="track-meta">Spadok Custom | Індустріальний саунд</div>
+                    <button class="track-cta">▶ Слухати трек</button>
+                </div>
+
+                <div class="track-card" onclick="playTrack('https://drive.google.com/file/d/12LDBQd90_GLQj_ISL_HomNRmIxhgkgRy/view?usp=sharing', 'Born of the Light')">
+                    <div class="track-visual"></div>
+                    <div class="track-title">Born of the Light</div>
+                    <div class="track-meta">Spadok Custom | Епічний трек</div>
+                    <button class="track-cta">▶ Слухати трек</button>
+                </div>
+
+                <div class="track-card" onclick="playTrack('https://drive.google.com/file/d/1dN7hrhC04IOufY9nlUM9PuJZjyYLs5ab/view?usp=sharing', 'Eternal Light')">
+                    <div class="track-visual"></div>
+                    <div class="track-title">Eternal Light</div>
+                    <div class="track-meta">Spadok Custom | Атмосферна лірика</div>
+                    <button class="track-cta">▶ Слухати трек</button>
+                </div>
+
+                <div class="track-card" onclick="playTrack('https://drive.google.com/file/d/1_8_CAv1I50MLAd592PVdBcet5QGMzUqI/view?usp=sharing', 'The Mask I Wear')">
+                    <div class="track-visual"></div>
+                    <div class="track-title">The Mask I Wear</div>
+                    <div class="track-meta">Spadok Custom | Темний рок</div>
+                    <button class="track-cta">▶ Слухати трек</button>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Список треків -->
-        <div id="playlist" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
-        </div>
-    </section>
+        <!-- Ціни, контакти (скорочено) -->
+        <section style="padding: 60px 20px; text-align: center;">
+            <h2 style="font-size: 2rem; color: #e63946;">Вартість</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="background: #1e1e1e; padding: 30px; border-radius: 10px;">
+                    <h3>Базовий</h3>
+                    <div style="font-size: 2rem; font-weight: bold; color: #e63946;">500 грн</div>
+                </div>
+                <div style="background: #1e1e1e; padding: 30px; border-radius: 10px;">
+                    <h3>Преміум</h3>
+                    <div style="font-size: 2rem; font-weight: bold; color: #e63946;">1000 грн</div>
+                </div>
+            </div>
+        </section>
 
-    <!-- Решта контенту скорочено для тестування -->
-    <section style="padding: 60px 20px; text-align: center;">
-        <h2 style="color: #e63946;">Готові до свого хіта?</h2>
-        <a href="https://t.me/SpadokCustom_bot" style="background: #e63946; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Написати в Telegram</a>
-    </section>
+        <section style="padding: 60px 20px; text-align: center;">
+            <h2 style="font-size: 2rem; color: #e63946;">Готові до свого хіта?</h2>
+            <a href="https://t.me/SpadokCustom_bot" style="background: #e63946; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Написати в Telegram</a>
+        </section>
+    </div>
 
     <script>
-        const audio = new Audio();
-        const tracks = [
-            {
-                title: "Без перемотки",
-                file: "https://drive.google.com/uc?export=download&id=1pfn177CW6G3s_HrC47ISEH9Gd9mBuGQg"
-            },
-            {
-                title: "Голос Вітру",
-                file: "https://drive.google.com/uc?export=download&id=1FwPDocOO_LarR91GvSDmn8pxVhGY2go9"
-            },
-            {
-                title: "Blood Pay",
-                file: "https://drive.google.com/uc?export=download&id=1JWtFYIB-p1l7UJBRs_dTy9oU76ISVSvz"
-            },
-            {
-                title: "Born of the Light",
-                file: "https://drive.google.com/uc?export=download&id=12LDBQd90_GLQj_ISL_HomNRmIxhgkgRy"
-            },
-            {
-                title: "Eternal Light",
-                file: "https://drive.google.com/uc?export=download&id=1dN7hrhC04IOufY9nlUM9PuJZjyYLs5ab"
-            },
-            {
-                title: "The Mask I Wear",
-                file: "https://drive.google.com/uc?export=download&id=1_8_CAv1I50MLAd592PVdBcet5QGMzUqI"
-            }
-        ];
-
-        let currentTrackIndex = 0;
-
-        function initPlaylist() {
-            const playlist = document.getElementById('playlist');
-            tracks.forEach((track, index) => {
-                const item = document.createElement('div');
-                item.style = "background: #1e1e1e; padding: 20px; border-radius: 10px; cursor: pointer; margin: 10px 0; border-left: 4px solid transparent;";
-                item.innerHTML = `<div style="font-weight: bold; margin-bottom: 8px;">${track.title}</div>`;
-                item.onclick = () => playTrack(index);
-                playlist.appendChild(item);
-            });
-        }
-
-        function playTrack(index) {
-            currentTrackIndex = index;
-            audio.src = tracks[index].file;
-            document.getElementById('currentTrack').textContent = tracks[index].title;
-            audio.play();
-            document.getElementById('playBtn').textContent = '⏸';
-        }
-
-        document.getElementById('playBtn').onclick = function() {
-            if (audio.paused) {
-                audio.play();
-                this.textContent = '⏸';
-            } else {
-                audio.pause();
-                this.textContent = '▶';
-            }
-        };
-
-        document.getElementById('progress').onclick = function(e) {
-            const rect = this.getBoundingClientRect();
-            const percent = (e.clientX - rect.left) / rect.width;
-            audio.currentTime = percent * audio.duration;
-        };
-
-        audio.ontimeupdate = function() {
-            const progress = (audio.currentTime / audio.duration) * 100;
-            document.getElementById('progressBar').style.width = progress + '%';
-        };
-
-        window.onload = initPlaylist;
+        function playTrack(driveUrl, title) {{
+            // Відкриваємо Google Drive у новій вкладці
+            window.open(driveUrl, '_blank');
+        }}
     </script>
 </body>
 </html>
