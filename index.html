@@ -1,24 +1,12 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
     <title>Spadok Custom | Унікальні пісні та музика на замовлення</title>
     <meta name="description" content="Створення унікальних пісень на замовлення з живим звуком. Треки для подарунків, бізнесу, привітань. Будь-який жанр від лірики до року. Замовляй свій хіт онлайн!">
-    <meta name="keywords" content="пісня на замовлення, замовити пісню, пісня в подарунок, написати пісню, створення музики, унікальна пісня, пісня штучний інтелект, музика для бізнесу, Spadok Custom">
-    <meta name="author" content="Spadok Custom">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph (для красивих прев'ю в Telegram/Facebook) -->
-    <meta property="og:title" content="Spadok Custom | Пісні на замовлення">
-    <meta property="og:description" content="Унікальні пісні з живим звуком під ваші потреби. Без штучної пластмаси.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tatkis.github.io/spadok-custom/">
-    <!-- Бажано створити і завантажити картинку preview.jpg (1200x630) у папку сайту -->
-    <meta property="og:image" content="https://tatkis.github.io/spadok-custom/preview.jpg">
-
+    <meta name="keywords" content="пісня на замовлення, замовити пісню, пісня в подарунок, написати пісню, створення музики, унікальна пісня, Spadok Custom">
     <style>
         :root {
             --bg-color: #121212;
@@ -26,6 +14,7 @@
             --accent-color: #e63946;
             --card-bg: #1e1e1e;
         }
+        * { box-sizing: border-box; }
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -33,6 +22,7 @@
             color: var(--text-color);
             line-height: 1.6;
         }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         header {
             text-align: center;
             padding: 80px 20px;
@@ -63,38 +53,89 @@
             transition: 0.3s;
         }
         .btn:hover { background-color: #d62828; transform: translateY(-2px); }
-        
-        section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+
+        section { padding: 60px 20px; }
         h2 { text-align: center; font-size: 2rem; margin-bottom: 40px; border-bottom: 2px solid var(--accent-color); display: inline-block; padding-bottom: 10px; }
         .text-center { text-align: center; }
 
-        /* Відео сітка */
-        .portfolio-grid {
+        /* Аудіоплеєр */
+        .audio-player {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(230,57,70,0.3);
+        }
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .play-btn {
+            background: var(--accent-color);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .play-btn:hover { transform: scale(1.1); }
+        .track-info {
+            flex-grow: 1;
+            text-align: left;
+            max-width: 400px;
+        }
+        .track-title { font-size: 1.3rem; font-weight: bold; margin-bottom: 5px; }
+        .track-artist { color: #ccc; font-size: 0.9rem; }
+        .progress-container {
+            background: #444;
+            height: 6px;
+            border-radius: 3px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        .progress-bar {
+            background: var(--accent-color);
+            height: 100%;
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s;
+        }
+        .time-display { font-size: 0.85rem; color: #ccc; }
+
+        /* Плейлист */
+        .playlist {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
-        .video-wrapper {
+        .playlist-item {
             background: var(--card-bg);
-            padding: 10px;
-            border-radius: 8px;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
         }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 5px;
+        .playlist-item:hover {
+            background: #2a2a2a;
+            transform: translateY(-2px);
+            border-left-color: var(--accent-color);
         }
-        .video-container iframe {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            border: none;
+        .playlist-item.active {
+            background: #2a2a2a;
+            border-left-color: var(--accent-color);
         }
-        .video-title { margin-top: 10px; font-weight: bold; text-align: center; font-size: 0.9rem; color: #ccc; }
+        .playlist-title { font-weight: bold; margin-bottom: 8px; }
+        .playlist-duration { color: #888; font-size: 0.9rem; }
 
-        /* Ціни та Етапи */
+        /* Ціни */
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card {
             background: var(--card-bg);
@@ -107,89 +148,203 @@
         li { margin-bottom: 10px; }
 
         footer { text-align: center; padding: 40px 20px; border-top: 1px solid #333; margin-top: 40px; }
+
+        @media (max-width: 768px) {
+            .audio-controls { flex-direction: column; gap: 15px; }
+            .playlist { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Spadok <span>Custom</span></h1>
+            <p class="subtitle">Унікальні пісні на замовлення. Живий звук, професійне зведення, без "штучної пластмаси". Будь-який жанр — від лірики до року.</p>
+            <a href="#contact" class="btn">Замовити трек</a>
+        </header>
 
-<header>
-    <h1>Spadok <span>Custom</span></h1>
-    <p class="subtitle">Унікальні пісні на замовлення. Живий звук, професійне зведення, без "штучної пластмаси". Будь-який жанр — від лірики до року.</p>
-    <a href="#contact" class="btn">Замовити трек</a>
-</header>
+        <section id="portfolio">
+            <div class="text-center"><h2>Наш звук (Портфоліо)</h2></div>
 
-<section id="portfolio">
-    <div class="text-center"><h2>Наш звук (Портфоліо)</h2></div>
-    <div class="portfolio-grid">
-        <div class="video-wrapper">
-            <div class="video-container">
-                <iframe src="https://www.youtube-nocookie.com/embed/qD9H1B-nGmw?rel=0&modestbranding=1&playsinline=1" title="Французький шансон (Українською)" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <!-- Аудіоплеєр -->
+            <div class="audio-player">
+                <div class="audio-controls">
+                    <button class="play-btn" id="playBtn">▶</button>
+                    <div class="track-info">
+                        <div class="track-title" id="trackTitle">Оберіть трек для прослуховування</div>
+                        <div class="track-artist" id="trackArtist">Spadok Custom</div>
+                    </div>
+                    <div class="progress-container" id="progressContainer">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                    </div>
+                </div>
             </div>
-            <div class="video-title">Французький шансон (Українською)</div>
-        </div>
-        <div class="video-wrapper">
-            <div class="video-container">
-                <iframe src="https://www.youtube-nocookie.com/embed/by_hivVYc0A?rel=0&modestbranding=1&playsinline=1" title="Ска-Панк (26 000+ переглядів)" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+            <!-- Плейлист -->
+            <div class="playlist" id="playlist">
+                <!-- Треки додаються динамічно через JS -->
             </div>
-            <div class="video-title">Ска-Панк (26 000+ переглядів)<br><span style="font-size: 0.8em; color: var(--accent-color);">18+ (ненормативна лексика)</span></div>
-        </div>
-        <div class="video-wrapper">
-            <div class="video-container">
-                <iframe src="https://www.youtube-nocookie.com/embed/QO0-KPOkyrM?rel=0&modestbranding=1&playsinline=1" title="Cold Wave / Пост-панк" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </section>
+
+        <section id="how-it-works">
+            <div class="text-center"><h2>Як ми працюємо</h2></div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>1. Ваша ідея</h3>
+                    <p>Ви описуєте ситуацію (подарунок, історія з життя, жарт) або даєте готовий вірш. Вибираємо настрій і жанр.</p>
+                </div>
+                <div class="card">
+                    <h3>2. Наша магія</h3>
+                    <p>Пишемо професійний текст, генеруємо структуру, підбираємо правильний живий вокал та робимо зведення.</p>
+                </div>
             </div>
-            <div class="video-title">Cold Wave / Пост-панк</div>
-        </div>
+        </section>
+
+        <section id="pricing">
+            <div class="text-center"><h2>Вартість</h2></div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Базовий</h3>
+                    <div class="price">500 грн</div>
+                    <ul>
+                        <li>Пісня за вашою історією</li>
+                        <li>1 жанр на вибір</li>
+                        <li>2 варіанти виконання</li>
+                        <li>MP3 / WAV високої якості</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Преміум</h3>
+                    <div class="price">1000 грн</div>
+                    <ul>
+                        <li>Повністю унікальний текст</li>
+                        <li>Складне зведення та мастеринг</li>
+                        <li>Передача комерційних прав</li>
+                        <li>Базове відео для соцмереж (YouTube/TikTok)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="text-center">
+            <h2>Готові до свого хіта?</h2>
+            <p>Напишіть нам у Telegram. Обговоримо деталі та почнемо роботу.</p>
+            <a href="https://t.me/SpadokCustom_bot" class="btn" target="_blank" rel="noopener noreferrer">Написати в Telegram</a>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Spadok Custom. Усі права захищені.</p>
+        </footer>
     </div>
-</section>
 
-<section id="how-it-works">
-    <div class="text-center"><h2>Як ми працюємо</h2></div>
-    <div class="grid-2">
-        <div class="card">
-            <h3>1. Ваша ідея</h3>
-            <p>Ви описуєте ситуацію (подарунок, історія з життя, жарт) або даєте готовий вірш. Вибираємо настрій і жанр.</p>
-        </div>
-        <div class="card">
-            <h3>2. Наша магія</h3>
-            <p>Пишемо професійний текст, генеруємо структуру, підбираємо правильний живий вокал та робимо зведення.</p>
-        </div>
-    </div>
-</section>
+    <script>
+        const audio = new Audio();
+        let currentTrack = 0;
+        let tracks = [
+            {
+                title: "Французький шансон (Українською)",
+                artist: "Spadok Custom",
+                file: "audio/french_chanson_ua.mp3"
+            },
+            {
+                title: "Ска-Панк (26 000+ переглядів)",
+                artist: "Spadok Custom",
+                file: "audio/skapunk_26k.mp3"
+            },
+            {
+                title: "Cold Wave / Пост-панк",
+                artist: "Spadok Custom", 
+                file: "audio/postpunk_coldwave.mp3"
+            }
+            // Додавайте нові треки сюди у такому ж форматі
+        ];
 
-<section id="pricing">
-    <div class="text-center"><h2>Вартість</h2></div>
-    <div class="grid-2">
-        <div class="card">
-            <h3>Базовий</h3>
-            <div class="price">500 грн</div>
-            <ul>
-                <li>Пісня за вашою історією</li>
-                <li>1 жанр на вибір</li>
-                <li>2 варіанти виконання</li>
-                <li>MP3 / WAV високої якості</li>
-            </ul>
-        </div>
-        <div class="card">
-            <h3>Преміум</h3>
-            <div class="price">1000 грн</div>
-            <ul>
-                <li>Повністю унікальний текст</li>
-                <li>Складне зведення та мастеринг</li>
-                <li>Передача комерційних прав</li>
-                <li>Базове відео для соцмереж (YouTube/TikTok)</li>
-            </ul>
-        </div>
-    </div>
-</section>
+        // Ініціалізація плеєра
+        function initPlayer() {
+            const playBtn = document.getElementById('playBtn');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const currentTimeEl = document.getElementById('currentTime');
+            const durationEl = document.getElementById('duration');
+            const trackTitleEl = document.getElementById('trackTitle');
+            const trackArtistEl = document.getElementById('trackArtist');
+            const playlist = document.getElementById('playlist');
 
-<section id="contact" class="text-center">
-    <h2>Готові до свого хіта?</h2>
-    <p>Напишіть нам у Telegram. Обговоримо деталі та почнемо роботу.</p>
-    <a href="https://t.me/SpadokCustom_bot" class="btn" target="_blank" rel="noopener noreferrer">Написати в Telegram</a>
-</section>
+            // Створюємо плейлист
+            tracks.forEach((track, index) => {
+                const item = document.createElement('div');
+                item.className = 'playlist-item';
+                item.innerHTML = `
+                    <div class="playlist-title">${track.title}</div>
+                    <div class="playlist-duration">${track.artist}</div>
+                `;
+                item.onclick = () => playTrack(index);
+                playlist.appendChild(item);
+            });
 
-<footer>
-    <p>&copy; 2026 Spadok Custom. Усі права захищені.</p>
-</footer>
+            playBtn.onclick = togglePlay;
+            progressContainer.onclick = (e) => seek(e);
+            audio.ontimeupdate = updateProgress;
+            audio.onloadedmetadata = () => {
+                durationEl.textContent = formatTime(audio.duration);
+            };
+            audio.onended = () => {
+                playNext();
+            };
+        }
 
+        function playTrack(index) {
+            currentTrack = index;
+            const playlistItems = document.querySelectorAll('.playlist-item');
+            playlistItems.forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+
+            audio.src = tracks[index].file;
+            document.getElementById('trackTitle').textContent = tracks[index].title;
+            document.getElementById('trackArtist').textContent = tracks[index].artist;
+            audio.play();
+            document.getElementById('playBtn').textContent = '⏸';
+        }
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                document.getElementById('playBtn').textContent = '⏸';
+            } else {
+                audio.pause();
+                document.getElementById('playBtn').textContent = '▶';
+            }
+        }
+
+        function updateProgress() {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('currentTime').textContent = formatTime(audio.currentTime);
+        }
+
+        function seek(e) {
+            const rect = e.target.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            audio.currentTime = percent * audio.duration;
+        }
+
+        function playNext() {
+            const nextIndex = (currentTrack + 1) % tracks.length;
+            playTrack(nextIndex);
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Запуск при завантаженні сторінки
+        window.onload = initPlayer;
+    </script>
 </body>
 </html>
